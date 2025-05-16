@@ -12,8 +12,8 @@ const HeroSection = () => {
               alt="frame"
             />
           </div>
-          <div>
-            <h1 className="mb-1.5 text-[56px] font-bold leading-none text-orange-300 font-mono lg:text-[73px]">
+          <div className="px-3">
+            <h1 className="mb-1.5 text-[40px] font-bold leading-none text-orange-300 font-mono lg:text-[73px]">
               Tasker.
             </h1>
             <p className="xl:text-lg my-2 opacity-60">

@@ -1,46 +1,49 @@
 import Task from "./Task";
 
-const TaskList = ({ tasks }) => {
+const TaskList = ({ tasks, onEdit, onDelete, toggleFavorite }) => {
   return (
-    <div className="overflow-auto">
-      <table className="table-fixed overflow-auto xl:w-full">
-        <thead>
-          <tr>
-            <th className="p-4 pb-8 text-sm font-semibold capitalize w-[48px]"></th>
-            <th className="p-4 pb-8 text-sm font-semibold capitalize w-[300px]">
-              {" "}
-              Title{" "}
-            </th>
-            <th className="p-4 pb-8 text-sm font-semibold capitalize w-full">
-              {" "}
-              Description{" "}
-            </th>
-            <th className="p-4 pb-8 text-sm font-semibold capitalize md:w-[350px]">
-              {" "}
-              Tags{" "}
-            </th>
-            <th className="p-4 pb-8 text-sm font-semibold capitalize md:w-[100px]">
-              {" "}
-              Priority{" "}
-            </th>
-            <th className="p-4 pb-8 text-sm font-semibold capitalize md:w-[100px]">
-              {" "}
-              Options{" "}
-            </th>
+    <table className="table-auto md:table-fixed overflow-auto xl:w-full font-mono">
+      <thead>
+        <tr>
+          <th className="md:p-4 pb-8 text-sm font-semibold capitalize md:w-[48px]"></th>
+          <th className="md:p-4 pb-8 text-sm font-semibold capitalize md:w-[250px]">
+            {" "}
+            Title{" "}
+          </th>
+          <th className="md:p-4 pb-8 text-sm font-semibold capitalize md:w-full">
+            {" "}
+            Description{" "}
+          </th>
+          <th className="md:p-4 pb-8 text-sm font-semibold capitalize md:w-[200px]">
+            {" "}
+            Tags{" "}
+          </th>
+          <th className="md:p-4 pb-8 text-sm font-semibold capitalize md:w-[100px]">
+            {" "}
+            Priority{" "}
+          </th>
+          <th className="md:p-4 pb-8 text-sm font-semibold capitalize md:w-[150px]">
+            {" "}
+            Options{" "}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {tasks.map((task) => (
+          <tr
+            key={task.id}
+            className="border-b border-[#2E3443] bg-[#202530] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2 items-center"
+          >
+            <Task
+              task={task}
+              onEdit={onEdit}
+              onDelete={onDelete}
+              toggleFavorite={toggleFavorite}
+            />
           </tr>
-        </thead>
-        <tbody>
-          {tasks.map((task) => (
-            <tr
-              key={task.id}
-              className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2 items-center"
-            >
-              <Task task={task} />
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
   );
 };
 

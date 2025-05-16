@@ -5,7 +5,7 @@ import TaskBoard from "./layouts/TaskBoard";
 
 const App = () => {
   return (
-    <div className="bg-[#191D26] font-inter text-white">
+    <div className="bg-[#191D26] font-mono text-white relative">
       <Header />
       <div className="flex flex-col justify-center items-center">
         <HeroSection />

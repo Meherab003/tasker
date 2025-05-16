@@ -1,24 +1,29 @@
 import { FaRegStar, FaStar } from "react-icons/fa";
 
-const Task = ({ task }) => {
+const Task = ({ task, onEdit, onDelete, toggleFavorite }) => {
   return (
     <>
       <td>
-        {task.isFavorite ? (
-          <FaStar className="text-yellow-500 text-xl" />
-        ) : (
-          <FaRegStar className="text-yellow-500 text-xl" />
-        )}
+        <button onClick={() => toggleFavorite(task)}>
+          {task.isFavorite ? (
+            <FaStar className="text-yellow-500 md:text-xl" />
+          ) : (
+            <FaRegStar className="text-yellow-500 md:text-xl" />
+          )}
+        </button>
       </td>
-      <td>{task.title}</td>
+      <td className="font-semibold">{task.title}</td>
       <td>
-        <p className="text-sm">{task.description}</p>
+        <p className="text-sm text-red-500 md:hidden">
+          Can't show on Small Devices
+        </p>
+        <p className="text-sm hidden md:block">{task.description}</p>
       </td>
       <td>
         <ul className="flex justify-center gap-1.5 flex-wrap">
           {task.tags.map((tag) => (
             <li key={tag}>
-              <span className="inline-block h-5 whitespace-nowrap rounded-[45px] bg-[#00D991A1] px-2.5 text-sm capitalize text-[#F4F5F6]">
+              <span className="inline-block h-5 whitespace-nowrap rounded-[45px] bg-green-300 text-black font-bold px-2.5 text-sm capitalize">
                 {tag}
               </span>
             </li>
@@ -28,8 +33,18 @@ const Task = ({ task }) => {
       <td className="text-center">{task.priority}</td>
       <td>
         <div className="flex items-center justify-center space-x-3">
-          <button className="text-red-500">Delete</button>
-          <button className="text-blue-500">Edit</button>
+          <button
+            onClick={() => onDelete(task.id)}
+            className="text-red-300 font-semibold"
+          >
+            Delete
+          </button>
+          <button
+            onClick={() => onEdit(task)}
+            className="text-blue-300 font-semibold mr-5"
+          >
+            Edit
+          </button>
         </div>
       </td>
     </>
